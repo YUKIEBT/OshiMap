@@ -1,0 +1,2 @@
+class Oshi < ApplicationRecord
+end
