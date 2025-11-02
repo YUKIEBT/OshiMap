@@ -1,42 +1,53 @@
-
-<div class="container px-5 px-sm-0">
+<div class="container py-5">
   <div class="row">
-    <div class="col-md-3">
-      <h2>User Info</h2>
-      <div class="profile-image mb-3">
-        <%= image_tag @user.get_profile_image(100, 100), class: "img-fluid rounded-circle" %>
-      </div>
 
-      <table class="tabal">
-        <tbody>
-          <tr>
-            <th>Name</th>
-            <td><%= @user.name %></td>
-          </tr>
-          
-          <tr>
-            <th>Introduction</th>
-            <td><%= @user.introduction %></td>
-          </tr>
-        </tbody>
-      </table>
-      <%= if @user == current_user %>
+    <div class="col-lg-4 mb-4">
+      <div class="card shadow-sm p-4 sticky-top" style="top: 20px;">
+        <h3 class="h4 text-center mb-3">プロフィール</h3>
+        <div class="text-center mb-3">
+          <%= image_tag @user.get_profile_image(100, 100), class: "rounded-circle border mb-2" %>
+          <h4><%= @user.name %></h4>
+        </div>
+
+        <p class="text-muted"><%= @user.introduction %></p>
+
+        <% if @user == current_user  %>
+        <hr>
+        <%= link_to 'プロフィール編集', edit_user_path(@user), class: 'btn btn-outline-info btn-block' %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-lg-8">
+      <h3 class="mb-4"><%= @user.name %> さんの推し活記録 (<%= @posts.count %>件)</h3>
+
+      <% if @posts.empty? %>
+        <p class="text-muted">まだ推し活記録の投稿がありません。</p>
+      <% else %>
+
         <div class="row">
-          <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary btn-block" do %>
-            <i class="fas fa-user-cog"></i>Edit Profile
+          <% @posts.each do |post| %>
+            <div class="col-md-6 mb-4">
+              <div class="card shadow-lg h-100">
+                <%= link_to post_path(post) do %>
+                  <%= image_tag post.get_image(300, 200), class: "card-img-top" %>
+                <% end %>
+
+                <div class="card-body">
+                  <h5 class="card-title">
+                    <%= link_to post.title, post_path(post), class: "text-dark" %>
+                  </h5>
+                  <small class="text-muted">
+                  <%= post.created_at.strftime("%Y/%m/%d") %> |
+                  <i class="fas fa-comment"></i> <%= post.comments.count %>
+                  </small>
+                </div>
+              </div>
+            </div>
           <% end %>
         </div>
       <% end %>
-    </div>
 
-  
-    <div class="col-md-9">
-      <h2><%= @user.name %>'S Posts</h2>
-      <% if @posts.present? %>
-        <%= render 'posts/list', posts: @posts %>
-      <% else %>
-        <p class="text-muted">まだ投稿がありません</p>
-      <% end %>
     </div>
   </div>
 </div>

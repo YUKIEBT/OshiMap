@@ -1,2 +1,21 @@
-<h1>Homes#top</h1>
-<p>Find me in app/views/homes/top.html.erb</p>
+<div class="jumbotron jumbotron-fluid text-center p-5 mb-0" style="background-color: #f8f9fa">
+  <div class="container">
+    <h1 class="display-4 font-weight-bold" style="color: #6c757d;">Oshi Map</h1>
+    <p class="lead">あなたの「推し」の活動場所を記録・共有し、巡礼をサポートする地図SNSです。</p>
+    <hr class="my-4">
+    <div class="row justify-content-center">
+      <div class="col-md-3 mb-2">
+        <%= link_to "ログイン", new_user_session_path, class: "btn btn-info btn-lg btn-block" %>
+      </div>
+      <div class="col-md-3 mb-2">
+        <%= link_to "新規登録", new_user_registration_path, class: "btn btn-success btn-lg btn-block" %>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="container py-5 text-center">
+  <p class="text-muted">自分だけの聖地巡礼マップを作りましょう</p>
+  <%= link_to "Oshi Mapとは？", homes_about_path, class: "btn btn-outline-secondary mt-3" %>
+</div>

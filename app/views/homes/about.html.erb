@@ -1,2 +1,42 @@
-<h1>Homes#about</h1>
-<p>Find me in app/views/homes/about.html.erb</p>
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <h1 class="mb-4 text-center text-primary">Oshi Mapとは？</h1>
+      <p class="lead text-center">
+        「Oshi Map」は、あなたの「推し」にまつわる場所（聖地）を記録・共有し、推し活をもっと楽しく便利にするためのSNSです。
+      </p>
+
+      <hr class="my-5">
+      <div class="mb-5">
+        <h2 class="h4 text-secondary mb-3"><i class="fas fa-bullseye"></i>Oshi Mapの目的</h2>
+        <p>
+        推し活における情報の散逸を防ぎ、場所という共通の軸でファン同士を繋げます。例えば「このカフェは○○さんが訪れた場所だ！」という情報を、地図上で視覚的に共有し、他のファンが容易に聖地巡礼できるようにサポートします。
+        </p>
+        <p>
+        あなたの「推しへの愛」を地図上にピンに託して、世界中にファンと共有しましょう。
+        </p>
+      </div>
+
+      <div class="mb-5">
+        <h2 class="h4 text-secondary mb-3"><i class="fas fa-map-marked-alt"></i>Oshi Mapの使いかた</h2>
+
+        <ol class="list-group kist-group-numbered">
+          <li class="list-group-item">
+            <strong>サインアップ：</strong>まずは無料でアカウントを作成します。
+          </li>
+          <li class="list-group-item">
+            <strong>地図を閲覧：</strong>投稿一覧画面（またはあなた専用のマップ画面）で、他のユーザーが投稿した全ての「聖地」を地図上で確認できます。
+          </li>
+          <li class="list-group-item">
+            <strong>コメントといいね</strong>興味のある投稿にコメントを残したり、「いいね」を付けて巡礼の記録を残したりできあます。
+          </li>
+        </ol>
+      </div>
+
+      <div class="text-center mt-5">
+        <%= link_to "今すぐ始める", new_user_registration_path, class: "btn btn-primary btn-lg" %>
+      </div>
+      
+    </div>
+  </div>
+</div>

@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts
+    @posts = @user.posts.order(created_at: :desc)
   end
 
   def edit
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.update(params[:id])
+    @user = User.find(params[:id])
     if @user.update(user_params)
       flash.now[:notice] = "ユーザー情報を更新しました。"
       redirect_to user_path(@user)
@@ -26,7 +26,6 @@ class UsersController < ApplicationController
     end
   end
 
-  private
   def is_matching_login_user
     user = User.find(params[:id])
 
@@ -34,6 +33,8 @@ class UsersController < ApplicationController
       redirect_to posts_path
     end
   end
+
+  private
 
   def user_params
     params.require(:user).permit(:name, :introduction, :profile_image)

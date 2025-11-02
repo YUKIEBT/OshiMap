@@ -1,15 +1,6 @@
 Rails.application.routes.draw do
-  get 'users/index'
-  get 'users/show'
-  get 'users/edit'
-  get 'users/update'
-  get 'posts/index'
-  get 'posts/show'
-  get 'posts/new'
-  get 'posts/create'
-  get 'posts/edit'
-  get 'posts/update'
-  get 'posts/destroy'
+  get 'comments/create'
+  get 'comments/destroy'
   devise_for :admins
   devise_for :users
   root to: "homes#top"

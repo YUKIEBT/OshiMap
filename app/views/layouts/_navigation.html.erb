@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <div class="container">
+    <%= link_to "Oshi Map", root_path, class: "navbar-brand" %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <%= link_to "HOME", root_path, class: 'nav-link text-light' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "About", homes_about_path, class: 'nav-link text-light' %>
+        </li>
+        <% if user_signed_in? %>
+
+          <li class="nav-item mr-3">
+            <%= link_to new_post_path, class: "btn btn-outline-light" do %>
+              <i class="fas fa-plus"></i>新規投稿
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Posts", posts_path, class: 'nav-link text-light' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "My Page", user_path(current_user), class: 'nav-link text-light' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: 'nav-link text-light' %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Sign up", new_user_registration_path, class: 'nav-link text-light' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Log in", new_user_session_path, class: 'nav-link text-light' %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
