@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
-  get 'comments/create'
-  get 'comments/destroy'
-  devise_for :admins
+  devise_for :admins, path: 'admin', controllers: {
+    sessions: 'admin/admins/sessions'
+  }
+
+  namespace :admin do
+    root 'users#index'
+    resources :users, only: [:index, :show, :destroy]
+  end
+
   devise_for :users
   root to: "homes#top"
   get 'homes/about' => 'homes#about'

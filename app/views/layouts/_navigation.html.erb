@@ -7,6 +7,22 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
+        <% if false #user_signed_in? %>
+          <li class="nav-item mr-3 d-flex align-items-center">
+            <%= search_form_for @q, url: posts_path, class: "form-inline" do |f| %>
+              <div class="input-group">
+                <%= f.search_field :title_or_body_cont,
+                                  class: "form-control form-control-sm",
+                                  placeholder: "タイトルや本文を検索" %>
+                <div class="input-group-append">
+                  <button type="submit" class="btn btn-outline-light btn-sm">
+                    <i class="fas fa-search"></i>
+                  </button>
+                </div>
+              </div>
+            <% end %>
+          </li>
+        <% end %>
         <li class="nav-item">
           <%= link_to "HOME", root_path, class: 'nav-link text-light' %>
         </li>

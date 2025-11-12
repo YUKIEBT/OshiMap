@@ -1,0 +1,20 @@
+<h1>Admin::Users#show</h1>
+<p>Find me in app/views/admin/users/show.html.erb</p>
+
+<table class="table">
+  <tbody>
+    <tr>
+      <th>id</th>
+      <td><%= @user.id %></td>
+    </tr>
+    <tr>
+      <th>name</th>
+      <td><%= @user.name %></td>
+    </tr>
+  </tbody>
+</table>
+
+<%= link_to "destroy", admin_user_path(@user),
+                       method: :delete,
+                       data: { confirm: "本当に削除しますか？" },
+                       class: "btn btn-danger" %>
