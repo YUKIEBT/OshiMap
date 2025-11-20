@@ -12,4 +12,16 @@ class Post < ApplicationRecord
     end
     image.variant(resize_to_limit: [width, height]).processed
   end
+
+  def self.search_for(keyword, method)
+    case method
+    when "exact"
+      Post.where(title: keyword)
+    when "prefix"
+      Post.where('title LIKE ?', "#{keyword}%")
+    when "suffix"
+    when "partial"
+      Post.where('title LIKE ?', "%#{keyword}%")
+    end
+  end
 end

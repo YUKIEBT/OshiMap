@@ -1,0 +1,5 @@
+<% if params[:model] == "Post" %>
+  <%= render 'public/posts/posts', posts: @result %>
+<% elsif params[:model] == "User" %>
+  <%= render 'public/users/users', users: @result %>
+<% end %>

@@ -1,8 +1,5 @@
-<div class="container py-5">
-  <h2 class="text-center mb-4">投稿一覧</h2>
-  
   <div class="row">
-    <% @posts.each do |post| %>
+    <% posts.each do |post| %>
       <div class="col-md-4 mb-4">
         <div class="card shadow-lg h-100">
           <%= link_to post_path(post) do %>
@@ -37,5 +34,3 @@
       </div>
     <% end %>
   </div>
-
-</div>

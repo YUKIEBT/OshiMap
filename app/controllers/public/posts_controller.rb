@@ -1,10 +1,9 @@
-class PostsController < ApplicationController
+class Public::PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :is_matching_login_user, only: [:edit, :update, :destroy]
 
   def index
-    @q = Post.ransack(params[:q])
-    @posts = @q.result
+    @posts = Post.all
   end
 
   def show

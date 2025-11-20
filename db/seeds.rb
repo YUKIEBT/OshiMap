@@ -8,6 +8,19 @@
 
 Admin.create!(email: "admin@test.com", password: "password")
 
-(1..10).each do |n|
-  User.create!(name: "user_#{n}", email: "user_#{n}@test.com", password: "password")
-end
+
+#if Rails.env.development?
+  (1..10).each do |n|
+    user = User.create!(
+      name: Faker::Name.name,
+      email: "user_#{n}@test.com",
+      password: "password")
+    (0..rand(0..5)).each do |m|
+      user.posts.create!(
+        address: Faker::Address.city,
+        title: Faker::Lorem.word,
+        body: Faker::Lorem.sentence(word_count: rand(3..10))
+      )
+    end
+  end
+#end

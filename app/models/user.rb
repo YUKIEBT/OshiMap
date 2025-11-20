@@ -25,5 +25,16 @@ class User < ApplicationRecord
       'no_image.jpg'
     end
   end
-  
+
+  def self.search_for(keyword, method)
+    case method
+    when "exact"
+      User.where(title: keyword)
+    when "prefix"
+      User.where('title LIKE ?', "#{keyword}%")
+    when "suffix"
+    when "partial"
+      User.where('title LIKE ?', "%#{keyword}%")
+    end
+  end
 end

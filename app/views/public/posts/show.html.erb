@@ -2,7 +2,7 @@
   <div class="row justify-content-center">
     <div class="col-lg-8">
       <div class="card shadow-lg mb-5 border-0">
-        <%= image_tag @post.get_image(800, 500), class: "card-img-top rounded-t-lg" %>
+        <%= image_tag @post.get_image(100, 75), class: "card-img-top rounded-t-lg" %>
         <div class="card-body p-5">
           <h1 class="card-title mb-4 font-weight-bold"><%= @post.title %></h1>
           <div class="d-flex align-items-center mb-4 border-bottoom pb-3">
@@ -38,7 +38,7 @@
 
       <div class="comment-area mt-5">
         <h3 class="mb-3"><i class="far fa-comments"></i>コメント (<%= @post.comments.count %>)</h3>
-        <%= render 'comments/form', post: @post, comment: @comment %>
+        <%= render 'public/comments/form', post: @post, comment: @comment %>
       </div>
       
     </div>
