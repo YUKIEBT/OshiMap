@@ -20,6 +20,7 @@ class Post < ApplicationRecord
     when "prefix"
       Post.where('title LIKE ?', "#{keyword}%")
     when "suffix"
+      Post.where('title LIKE ?', "%#{keyword}")
     when "partial"
       Post.where('title LIKE ?', "%#{keyword}%")
     end

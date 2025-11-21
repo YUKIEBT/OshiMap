@@ -29,12 +29,13 @@ class User < ApplicationRecord
   def self.search_for(keyword, method)
     case method
     when "exact"
-      User.where(title: keyword)
+      User.where(name: keyword)
     when "prefix"
-      User.where('title LIKE ?', "#{keyword}%")
+      User.where('name LIKE ?', "#{keyword}%")
     when "suffix"
+      User.where('name LIKE ?', "%#{keyword}")
     when "partial"
-      User.where('title LIKE ?', "%#{keyword}%")
+      User.where('name LIKE ?', "%#{keyword}%")
     end
   end
 end
